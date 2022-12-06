@@ -1,7 +1,7 @@
 import fastapi
 import uvicorn
 from api import home
-from NormalTest import test
+# from NormalTest import test
 
 # rpy2
 
@@ -38,7 +38,7 @@ app = fastapi.FastAPI()
 
 def configure():
     app.include_router(home.router)
-    app.include_router(test.router)
+    # app.include_router(test.router)
 
 
 configure()
