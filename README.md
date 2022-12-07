@@ -1,3 +1,4 @@
+celery -A celery_worker.celery worker --loglevel=info
 fastApi==0.87.0
 uvicorn~=0.19.0
 rpy2~=3.5.1
@@ -8,4 +9,4 @@ pandas~=1.5.2
 anndata2ri~=1.1
 celery==4.4.7
 gevent
-flower
+os.environ.setdefault('FORKED_BY_MULTIPROCESSING', '1')

@@ -16,6 +16,7 @@ class Test(BaseModel):
 class Result(BaseModel):
     task_id: str
     status: str
+    result: str
 
 
 class Task(BaseModel):

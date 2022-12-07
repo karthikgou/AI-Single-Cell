@@ -7,11 +7,15 @@ import time
 from celery import Celery
 # from rpy2.robjects import pandas2ri
 # import anndata2ri
+import os
+
+
+os.environ.setdefault('FORKED_BY_MULTIPROCESSING', '1')
 
 
 celery = Celery('fastApiApplication',
                 broker='amqp://localhost',
-                backend='rpc://')
+                backend='redis://')
 
 
 @celery.task(name="create_task")
@@ -69,7 +73,7 @@ def load_sce(inputPath, species, outputPath):
                         ''')
             r_f = robjects.globalenv['f']
             r_f(inputPath, species, outputPath)
-            return "Completed"
+            return "Generated the Output RDS File"
         else:
             print("File doesn't exists")
             raise NameError("File doesn't exists")  # Raise Error
