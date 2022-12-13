@@ -1,4 +1,6 @@
 celery -A celery_worker.celery worker --loglevel=info
+celery flower -A celery_worker.celery --broker:amqp://localhost
+
 fastApi==0.87.0
 uvicorn~=0.19.0
 rpy2~=3.5.1
